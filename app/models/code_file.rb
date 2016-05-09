@@ -11,4 +11,14 @@
 
 class CodeFile < ActiveRecord::Base
   belongs_to :user
+
+  after_initialize :ensure_defaults
+
+  private
+
+  def ensure_defaults
+    self.title ||= ""
+    self.content ||= ""
+  end
+  
 end

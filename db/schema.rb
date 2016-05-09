@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160509180656) do
   enable_extension "plpgsql"
 
   create_table "code_files", force: :cascade do |t|
+    t.string   "title",      default: "", null: false
     t.text     "content",    default: "", null: false
     t.integer  "user_id",                 null: false
     t.datetime "created_at",              null: false
