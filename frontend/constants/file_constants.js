@@ -1,4 +1,4 @@
-var fileConstants = {
+const fileConstants = {
   RECEIVE_FILES: "RECEIVE_FILES"
 };
 

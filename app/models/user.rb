@@ -15,7 +15,7 @@
 
 class User < ActiveRecord::Base
   attr_reader :password
-  
+
   validates :email, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :admin, inclusion: { in: [true, false] }
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :code_files
 
   def self.find_by_credentials(user_params)
-    user = find_by(username: user_params[:username])
+    user = find_by(email: user_params[:email])
     user && user.valid_password?(user_params[:password]) ? user : nil
   end
 

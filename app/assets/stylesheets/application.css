@@ -11,5 +11,32 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require midnight
+ *= require codemirror
  *= require_self
  */
+
+ .hidden {
+   display: none;
+ }
+
+.file-detail-log {
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.code-container > div {
+  flex: 1;
+}
+
+.code-container > div, div.CodeMirror {
+  height: 400px;
+}
+
+.code-container {
+}

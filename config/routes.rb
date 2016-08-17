@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :code_files, only: [:create, :update, :index, :destroy]
   end
+
+    get "/*path", to: "static_pages#root"
 end

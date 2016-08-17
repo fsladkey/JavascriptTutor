@@ -3,6 +3,7 @@ class Api::SessionsController < ApplicationController
   def create
     user = User.find_by_credentials(user_params)
     if user
+      log_in!(user)
       render json: user
     else
       render json: user.errors.full_messages, status: 422
@@ -18,5 +19,5 @@ class Api::SessionsController < ApplicationController
     log_out!
     render json: user
   end
-  
+
 end

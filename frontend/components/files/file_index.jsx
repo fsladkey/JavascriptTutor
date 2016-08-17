@@ -1,6 +1,8 @@
 import React from 'react';
-import fileApiUtil from '../../util/file_api_util';
+import FileDetail from './file_detail';
+import FileApiUtil from '../../util/file_api_util';
 import fileStore from '../../stores/file_store';
+import { Link } from 'react-router';
 
 export default class FileIndex extends React.Component {
 
@@ -14,7 +16,7 @@ export default class FileIndex extends React.Component {
       this.setStateFromStore.bind(this)
     );
 
-    fileApiUtil.fetch();
+    FileApiUtil.fetch();
   }
 
   componentWillUnmount() {
@@ -28,20 +30,14 @@ export default class FileIndex extends React.Component {
   render() {
     let files = this.state.files.map((file) => {
       return (
-        <div>
-          <p>
-            {file.title}
-          </p>
-          <p>
-            {file.content}
-          </p>
-        </div>
+        <li key={file.id}>
+          <Link to={"/files/" + file.id}>{file.title}</Link>
+        </li>
       );
     });
-
     return(
       <div>
-        <p>All The Files</p>
+        <h3>All The Files</h3>
         <ul>
           {files}
         </ul>

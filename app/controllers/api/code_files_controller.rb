@@ -1,8 +1,7 @@
 class Api::CodeFilesController < ApplicationController
 
   def index
-    # files = current_user.files
-    files = CodeFile.all
+    files = current_user.code_files.all
     render json: files
   end
 
@@ -21,9 +20,9 @@ class Api::CodeFilesController < ApplicationController
 
   def update
     if current_file.update(code_file_params)
-      render json: file
+      render json: current_file
     else
-      render json: file.errors.full_messages, status: 422
+      render json: current_file.errors.full_messages, status: 422
     end
   end
 
@@ -35,7 +34,7 @@ class Api::CodeFilesController < ApplicationController
   private
 
   def current_file
-    @current_file ||= file = CodeFile.find(params[:id])
+    @current_file ||= CodeFile.find(params[:id])
   end
 
   def code_file_params
